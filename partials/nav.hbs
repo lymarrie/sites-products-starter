@@ -2,20 +2,20 @@
     <div class="flex flex-wrap p-5 items-center justify-between md:justify-around">
         <a href="/">
             <div class="inline-flex items-center">
-                <img src="images/yext-logo.svg" height="56" width="56" class="hidden md:flex">
-                <h2 class="md:pl-5 text-xl cursor-pointer">
-                    Yext's Starter Pages
+                <img src="/images/yext-logo.svg" height="56" width="56" class="hidden md:flex">
+                <h2 class="md:pl-5 text-xl cursor-pointer bg-yellow-200">
+                    {{_site.name}}
                 </h2>
             </div>
         </a>
-        {{#each _site.c_header}}
-            <script>console.log("{{this}}");</script>
-            {{this}}
-        {{/each}}
-        <div class="hidden md:flex grid gap-x-10">
-            <a href="/" class="headerLink hover:underline ">Home</a>
-            <a href="/about" class="headerLink hover:underline ">About</a>
-            <a href="#" class="headerLink hover:underline ">Blog</a>
+        <div class="hidden md:flex grid gap-x-10 bg-yellow-200">
+            {{#with _site}}
+                {{#with c_header}}
+                    {{#each this}}
+                        <a href="{{uRL}}" class="headerLink hover:underline ">{{label}}</a>
+                    {{/each}}
+                {{/with}}
+            {{/with}}
         </div>
         <button class="hidden md:flex w-auto px-8 py-2 my-2 text-base font-medium text-white bg-black rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-gray-700">
             Button
@@ -30,9 +30,15 @@
     </div>
 
     <div class="links-mobile-view px-5 py-3 bg-white text-black justify-end" id="myLinks">
-        <a href="/" class="headerLink hover:underline ">Home</a>
-        <a href="/about" class="headerLink hover:underline ">About</a>
-        <a href="#" class="headerLink hover:underline ">Blog</a>
+        {{#with _site}}
+            {{#with c_header}}
+                {{#each this}}
+                    <div>
+                        <a href="{{uRL}}" class="headerLink hover:underline ">{{label}}</a>
+                    </div>
+                {{/each}}
+            {{/with}}
+        {{/with}}
     </div>
 </div>
 
