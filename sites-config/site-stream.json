@@ -1,7 +1,7 @@
 {
     "$id": "site-entity",
     "filter": {
-        "entityIds": ["YFW"]
+        "entityIds": ["brand-1"]
     },
     "source": "knowledgeGraph",
     "fields": [
